@@ -12,10 +12,10 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: website_development
+  database: parvir
   pool: 5
-  username: root
-  password:
+  username: parvir
+  password: DelI5AsaV55E1ADupA3EWASizeneYa
   socket: /var/lib/mysql/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -25,18 +25,18 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: website_test
+  database: parvir_test
   pool: 5
-  username: root
-  password:
+  username: parvir
+  password: DelI5AsaV55E1ADupA3EWASizeneYa
   socket: /var/lib/mysql/mysql.sock
 
 production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: website_production
+  database: parvir
   pool: 5
-  username: root
-  password:
+  username: parvir
+  password: DelI5AsaV55E1ADupA3EWASizeneYa
   socket: /var/lib/mysql/mysql.sock
