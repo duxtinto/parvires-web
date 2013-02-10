@@ -34,4 +34,7 @@ Website::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  # i18n
+  config.i18n.available_locales = :es
 end
