@@ -1,0 +1,58 @@
+    <div class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Partido Virtual</a>
+          <div class="container nav-collapse">
+            <ul class="nav">
+              <li><%= link_to "Link1", "/path1"  %></li>
+              <li><%= link_to "Link2", "/path2"  %></li>
+              <li><%= link_to "Link3", "/path3"  %></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+          <div class="span9">
+            <%= bootstrap_flash %>
+
+          </div>
+          </div><!--/span-->
+        </div><!--/row-->
+
+      <footer>
+        <p>&copy; Company 2013</p>
+      </footer>
+
+    </div> <!-- /container -->
+    
+    <div id="socialContainer">
+      <div class="container">
+        <ul class="socialButtons">
+          <li>
+            <iframe width="100px" scrolling="0" height="20px" frameborder="0" allowtransparency="true" src="http://ghbtns.com/github-btn.html?user=twitter&amp;repo=bootstrap&amp;type=watch&amp;count=true" class="github-btn"></iframe>
+          </li>
+          <li>
+            <iframe width="102px" scrolling="0" height="20px" frameborder="0" allowtransparency="true" src="http://ghbtns.com/github-btn.html?user=twitter&amp;repo=bootstrap&amp;type=fork&amp;count=true" class="github-btn"></iframe>
+          </li>
+          <li class="follow-btn">
+            <iframe scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/follow_button.1360366574.html#_=1360527705738&amp;id=twitter-widget-1&amp;lang=en&amp;screen_name=twbootstrap&amp;show_count=true&amp;show_screen_name=true&amp;size=m" class="twitter-follow-button twitter-follow-button" style="width: 240px; height: 20px;" title="Twitter Follow Button" data-twttr-rendered="true"></iframe>
+          </li>
+          <li class="tweet-btn">
+            <iframe scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/tweet_button.1360366574.html#_=1360527705718&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Ftwitter.github.com%2Fbootstrap%2Findex.html&amp;related=mdo%3ACreator%20of%20Twitter%20Bootstrap&amp;size=m&amp;text=Bootstrap&amp;url=http%3A%2F%2Ftwitter.github.com%2Fbootstrap%2F&amp;via=twbootstrap" class="twitter-share-button twitter-count-horizontal" style="width: 108px; height: 20px;" title="Twitter Tweet Button" data-twttr-rendered="true"></iframe>
+          </li>
+        </ul>
+      </div>
+    </div>    
+
+    <!-- Javascripts
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <%= javascript_include_tag "application" %>

@@ -34,4 +34,7 @@ Website::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+  
+  # i18n
+  config.i18n.available_locales = :es
 end
