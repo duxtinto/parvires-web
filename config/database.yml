@@ -38,5 +38,5 @@ production:
   database: parvir
   pool: 5
   username: parvir
-  password: MAjIlOpi8uRe6I2AFOT8colE4ucIz6
+  password: lEBANe8icoc65IK5Lo63YO4iPa1Eyi
   socket: /var/lib/mysql/mysql.sock
