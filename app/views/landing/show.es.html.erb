@@ -18,24 +18,33 @@
       </div>
     </div>
 
+    <div class="jumbotron masthead">
     <div class="container">
-        <div class="row">
-          <div class="span9">
-            <%= bootstrap_flash %>
-
-          </div>
-          </div><!--/span-->
-        </div><!--/row-->
-
-      <footer>
-        <p>&copy; Company 2013</p>
-      </footer>
-
-    </div> <!-- /container -->
+    <h1>¡Recupera la política!</h1>
+    <p>Breve explicación (1  o 2 frases) de  que problemas hemos detectado y como los resolvemos (tiene que enganchar a la gente para que nos dejen su correo en el formulario de debajo)</p>
+    <p>
+      <a onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Download', 'Download 2.3.0']);" class="btn btn-primary btn-large" href="assets/bootstrap.zip">Download Bootstrap</a>
+    </p>
+    <ul class="masthead-links">
+      <li>
+        <a onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Jumbotron links', 'GitHub project']);" href="http://github.com/twitter/bootstrap">GitHub project</a>
+      </li>
+      <li>
+        <a onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Jumbotron links', 'Examples']);" href="./getting-started.html#examples">Examples</a>
+      </li>
+      <li>
+        <a onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Jumbotron links', 'Extend']);" href="./extend.html">Extend</a>
+      </li>
+      <li>
+        Version 2.3.0
+      </li>
+    </ul>
+    </div>
+    </div>
     
-    <div id="socialContainer">
+    <div class="bs-docs-social">
       <div class="container">
-        <ul class="socialButtons">
+        <ul class="bs-docs-social-buttons">
           <li>
             <iframe width="100px" scrolling="0" height="20px" frameborder="0" allowtransparency="true" src="http://ghbtns.com/github-btn.html?user=twitter&amp;repo=bootstrap&amp;type=watch&amp;count=true" class="github-btn"></iframe>
           </li>
@@ -51,6 +60,21 @@
         </ul>
       </div>
     </div>    
+
+    <div class="container">
+        <div class="row">
+          <div class="span9">
+            <%= bootstrap_flash %>
+
+          </div>
+          </div><!--/span-->
+        </div><!--/row-->
+
+      <footer>
+        <p>&copy; Company 2013</p>
+      </footer>
+
+    </div> <!-- /container -->
 
     <!-- Javascripts
     ================================================== -->
