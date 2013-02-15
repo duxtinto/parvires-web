@@ -26,12 +26,13 @@ group :assets do
   # WARNING!!! I need to manually download the libv8-3.11.8.13-x86-linux.gem file to the vendor cache folder
   gem 'therubyracer', :platforms => :ruby
   gem "less-rails"
-  gem "twitter-bootstrap-rails"
-  gem "font-awesome-rails"
 
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem "twitter-bootstrap-rails"
+gem "font-awesome-rails"
+  
 gem 'jquery-rails'
 
 # Internationalization
