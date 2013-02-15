@@ -23,6 +23,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  # WARNING!!! I need to manually download the libv8-3.11.8.13-x86-linux.gem file to the vendor cache folder
   gem 'therubyracer', :platforms => :ruby
   gem "less-rails"
   gem "twitter-bootstrap-rails"
