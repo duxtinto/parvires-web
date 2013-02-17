@@ -1,3 +1,18 @@
+  <!-- Modals -->
+  <div id="successModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="successModalLabel">¡Ya estás censado!</h3>
+    </div>
+    <div class="modal-body">
+      <p></p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- NavBar -->
     <div class="navbar navbar-fixed-top navbar-inverse">
       <div class="navbar-inner">
         <div class="container">
@@ -9,9 +24,6 @@
           <a class="brand" href="#">Partido Virtual</a>
           <div class="container nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -19,44 +31,45 @@
     </div>
 
     <div class="jumbotron masthead">
-    <div class="container">
-    <h1>¡Recupera la política!</h1>
-    <p>La política es nuestra</p>
-    <p>
-      <a onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Download', 'Download 2.3.0']);" class="btn btn-primary btn-large" href="assets/bootstrap.zip">Download Bootstrap</a>
-    </p>
-    <ul class="masthead-links">
-      <li>
-        <a onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Jumbotron links', 'GitHub project']);" href="http://github.com/twitter/bootstrap">GitHub project</a>
-      </li>
-      <li>
-        <a onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Jumbotron links', 'Examples']);" href="./getting-started.html#examples">Examples</a>
-      </li>
-      <li>
-        <a onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Jumbotron links', 'Extend']);" href="./extend.html">Extend</a>
-      </li>
-      <li>
-        Version 2.3.0
-      </li>
-    </ul>
-    </div>
+      <div class="container">
+        <h1>¡Recupera la política!</h1>
+        <dl class="dl-horizontal quote-movie">
+            <dt>Torrente:</dt>
+            <dd>"¿Que la política es mala? Mira, aquí esta la política..."</dd>
+            <dd>"¿te hace algo?, ¿te muerde? ¿te pega? ¿te araña?"</dd>
+            <dt>Corrupto: </dt>
+            <dd>"Hola, soy un político corrupto"</dd>
+            <dt>Torrente:</dt>
+            <dd>"Este, este es el malo"</dd>
+        </dl>
+        
+        <!-- Form -->
+        <div class="row-fluid">
+          <%= form_for @pre, html: { class: "form-inline" } do |f| %>
+            <%= f.text_field :email, class: "span5", type: "email", placeholder: "¿Quieres estar informado? Dejanos tu correo..." %>
+            <%= f.submit "Censadme", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+            
+        <ul class="masthead-links">
+          <li>
+            <a href="#explanation">¿Que es esto?</a>
+          </li>
+          <li>
+            <a href="#">¿Quienes somos?</a>
+          </li>
+          <li>
+            <a href="#">¿Me puedo apuntar?</a>
+          </li>
+          <li>
+            Version 1.0
+          </li>
+        </ul>
+      </div>
     </div>
     
     <div class="bs-docs-social">
       <div class="container">
-        <!-- Twitter Script -->
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-        <!-- Facebook Script -->
-        <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=295163567279439";
-          fjs.parentNode.insertBefore(js, fjs);
-          }(document, 'script', 'facebook-jssdk'));
-        </script>
-        
         <ul class="bs-docs-social-buttons">
           <li class="follow-btn">
             <a href="https://twitter.com/ParVirES" class="twitter-follow-button" data-show-count="false" data-lang="es">Seguir a @ParVirES</a>
@@ -71,21 +84,90 @@
       </div>
     </div>    
 
+<a id="explanation"></a>
+<div class="container">
+
+  <div class="marketing">
+
+    <h1>¡Vamos a crear el primer partido WebDirigido!</h1>
+    <p class="marketing-byline">¿Necesitas alguna razón más amar/odiar el partido virtual? Sigue leyendo...</p>
+
+    <h2>La página web</h2>
+    
+    <div class="row-fluid">
+      <div class="span4">
+        <img src="assets/img/bs-docs-bootstrap-features.png" class="marketing-img">
+        <h3>Arma tu mente</h3>
+        <p>Infórmate y debate de los mismos temas sobre los que lo hacen los políticos, creando tu propia opinión</p>
+      </div>
+      <div class="span4">
+        <img src="assets/img/bs-docs-twitter-github.png" class="marketing-img">
+        <h3>Vota y reVota</h3>
+        <p>¿Por que votar solamente una vez cada 4 años, cuando podemos votar 'online' todas las decisiones del congreso o el senado</p>
+      </div>
+      <div class="span4">
+        <img src="assets/img/bs-docs-responsive-illustrations.png" class="marketing-img">
+        <h3>Votante y orgulloso</h3>
+        <p>Comparte con tus amigos de facebook, tus seguidores en twitter, etc... lo que piensas de los temas que nos importan a todos</p>
+      </div>
+    </div>
+
+    <hr class="soften">
+
+    <h2>El partido político</h2>
+    
+    <div class="row-fluid">
+      <div class="span4">
+        <img src="assets/img/bs-docs-responsive-illustrations.png" class="marketing-img">
+        <h3>Comandado desde la web</h3>
+        <p>Todos votamos en la web, y nuestros representantes replican el resultado en las cámaras</p>
+      </div>
+      <div class="span4">
+        <img src="assets/img/bs-docs-twitter-github.png" class="marketing-img">
+        <h3>Sin programa que incumplir</h3>
+        <p>Solamente tenemos una promesa... llevar los resultados de las votaciones de la web al congreso y al senado</p>
+      </div>
+      <div class="span4">
+        <img src="assets/img/bs-docs-bootstrap-features.png" class="marketing-img">
+        <h3>Poder real de decisión</h3>
+        <p>Tu votas desde casa, un café o la uni, influyendo en el resultado de las votaciones 'reales' del congreso</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+  <footer class="footer">
     <div class="container">
-        <div class="row">
-          <div class="span9">
-
-          </div>
-          </div><!--/span-->
-        </div><!--/row-->
-
-      <footer>
-        <p>&copy; Company 2013</p>
-      </footer>
-
-    </div> <!-- /container -->
+      <p>Creada por <a target="_blank" href="http://twitter.com/duxtinto">@duxtinto</a> gracias a <a target="_blank" href="http://twitter.github.com/bootstrap/index.html">Twitter Bootstrap</a>.</p>
+      <ul class="footer-links">
+        <li><a href="#explanation">¿Que es esto?</a></li>
+        <li class="muted">·</li>
+        <li><a href="#">¿Quienes somos?</a></li>
+        <li class="muted">·</li>
+        <li><a href="#">¿Me puedo apuntar?</a></li>
+      </ul>
+    </div>
+  </footer>
 
     <!-- Javascripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application" %>
+
+  <% if Rails.env.production? %>
+    <!-- Twitter Script -->
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        
+    <!-- Facebook Script -->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=295163567279439";
+          fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));
+    </script>
+  <% end %>

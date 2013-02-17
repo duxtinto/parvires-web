@@ -1,0 +1,23 @@
+<h1>Listing pres</h1>
+
+<table>
+  <tr>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pres.each do |pre| %>
+  <tr>
+    <td><%= pre.email %></td>
+    <td><%= link_to 'Show', pre %></td>
+    <td><%= link_to 'Edit', edit_pre_path(pre) %></td>
+    <td><%= link_to 'Destroy', pre, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Pre', new_pre_path %>

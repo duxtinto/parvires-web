@@ -1,4 +1,7 @@
 Website::Application.routes.draw do
+  resources :pres, :only => [:create]
+
+
   root :to => 'landing#show'
   
   # The priority is based upon order of creation:
