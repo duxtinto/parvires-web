@@ -147,22 +147,23 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
     dt { font-size: 17px; line-height: 23px; width: 85px; }
     dd { text-align: left; font-size: 17px; line-height: 23px; margin-left: 105px; }  
   }
+  p {
+    font-size: 40px;
+    font-weight: 200;
+    line-height: 1.25;
+  }
 }
-.masthead p {
-  font-size: 40px;
-  font-weight: 200;
-  line-height: 1.25;
-}
+ 
 
 /* Textual links in masthead */
 .masthead-links {
   margin: 0;
   list-style: none;
-}
-.masthead-links li {
-  display: inline;
-  padding: 0 10px;
-  color: rgba(255,255,255,.25);
+  li {
+    display: inline;
+    padding: 0 10px;
+    color: rgba(255,255,255,.25);
+  }  
 }
 
 /* Social proof buttons from GitHub & Twitter */
@@ -201,35 +202,55 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
 .marketing {
   text-align: center;
   color: #5a5a5a;
+  h1 {
+    margin: 60px 0 10px;
+    font-size: 45px;
+    font-weight: 200;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+  h2 {
+    font-weight: 200;
+    margin-bottom: 5px;
+  }
+  p {
+   font-size: 16px;
+   line-height: 1.5;
+  }
+  .marketing-byline {
+    margin-bottom: 40px;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.25;
+    color: #999;
+  }
+  .explWrapper {
+    background-color: @grayLighter;
+    border: 2px solid @gray;
+    .border-radius(5px);
+    color: @gray;
+    padding: 12px;
+    .explImage {
+      display: block;
+      margin: 20px;
+      i {
+        font-size: 24px;
+        background-color: @gray;
+        .border-radius(99px);
+        color: @grayLighter;
+        padding: 15px;
+      }
+    }
+  }
 }
-.marketing h1 {
-  margin: 60px 0 10px;
-  font-size: 45px;
-  font-weight: 200;
-  line-height: 1;
-  letter-spacing: -1px;
-}
-.marketing h2 {
-  font-weight: 200;
-  margin-bottom: 5px;
-}
-.marketing p {
-  font-size: 16px;
-  line-height: 1.5;
-}
-.marketing .marketing-byline {
-  margin-bottom: 40px;
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 1.25;
-  color: #999;
-}
+
+/*
 .marketing-img {
   display: block;
   margin: 0 auto 30px;
   max-height: 145px;
 }
-
+*/
 
 
 /* Footer
@@ -258,3 +279,99 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
   }
 }
 
+
+/* ribbon style
+-------------------------------------------------- */
+/* ribbon style */
+
+ .ribbon-wrapper {
+  position: relative;
+  margin-bottom: 15px;
+}
+  .ribbon-front {
+  background-color: #ccf; height: 50px;
+  width: 392px;
+  position: relative;
+  left:-20px;
+  z-index: 2;
+  .border-radius(0 5px 5px 0);
+  h2 {
+    line-height: 50px
+  }
+}
+
+  .ribbon-front,
+  .ribbon-back-left,
+  .ribbon-back-right
+{
+  -moz-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+  -khtml-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+  -webkit-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+  -o-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+}
+
+  .ribbon-edge-topleft,
+  .ribbon-edge-topright,
+  .ribbon-edge-bottomleft,
+  .ribbon-edge-bottomright {
+  position: absolute;
+  z-index: 1;
+  border-style:solid;
+  height:0px;
+  width:0px;
+}
+
+  .ribbon-edge-topleft,
+  .ribbon-edge-topright {
+}
+
+  .ribbon-edge-bottomleft,
+  .ribbon-edge-bottomright {
+  top: 50px;
+}
+
+  .ribbon-edge-topleft,
+  .ribbon-edge-bottomleft {
+  left: -20px;
+  border-color: transparent #99c transparent transparent;
+}
+
+  .ribbon-edge-topleft {
+  top: 0px;
+  border-width: 0px 20px 0 0;
+}
+  .ribbon-edge-bottomleft {
+  border-width: 0 20px 10px 0;
+}
+
+  .ribbon-edge-topright,
+  .ribbon-edge-bottomright {
+  left: 100px;
+  border-color: transparent transparent transparent #99c;
+}
+
+  .ribbon-edge-topright {
+  top: 0px;
+  border-width: 0px 0 0 0px;
+}
+  .ribbon-edge-bottomright {
+  border-width: 0 0 0px 0px;
+}
+
+  .ribbon-back-left {
+  position: absolute;
+  top: 10px;
+  left: -30px;
+  width: 30px;
+  height: 50px;
+  background-color: #ccf; z-index: 0;
+}
+
+  .ribbon-back-right {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 0px;
+  height: 50px;
+    z-index: 0;
+}
