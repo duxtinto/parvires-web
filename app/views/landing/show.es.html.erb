@@ -5,7 +5,48 @@
       <h3 id="successModalLabel">¡Ya estás censado!</h3>
     </div>
     <div class="modal-body">
-      <p></p>
+      <p>En cuanto tengamos todo funcionando, te mandaremos un email a la dirección que nos has indicado</p>
+      <p>Mientras tanto, si quieres involucrarte en la creación de la web y/o del partido, puedes enviarnos un correo a <a href="mailto:cuentanos@partidovirtual.es" target="_blank">cuentanos@partidovirtual.es</a>, dejanos un comentario en <a href="http://twitter.com/parvires" target="_blank">@ParVirEs</a> o en nuestra <a href="http://www.facebook.com/ParVirES" target="_blank">página de facebook</a></p>    
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+    </div>
+  </div>
+
+  <div id="actionModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="actionModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="actionModalLabel">¡Gracias por tu ayuda!</h3>
+    </div>
+    <div class="modal-body">
+      <p>Tanto la web como el partido político son proyectos abiertos a la participación de todo el mundo, de modo que cualquier persona interesada en aportar su granito de arena es bienvenida</p>
+      <p>Para empezar a colaborar con nosotros, puedes:
+        <ul>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/parvires" target="_blank">Unirte a nuestro grupo de trabajo</a></li> 
+          <li>Enviarnos un correo a <a href="mailto:cuentanos@partidovirtual.es" target="_blank">cuentanos@partidovirtual.es</a></li>
+          <li>Dejarnos un tweet en <a href="http://twitter.com/parvires" target="_blank">@ParVirEs</a></li>
+          <li>Dejarnos un comentario en <a href="http://www.facebook.com/ParVirES" target="_blank">nuestra página de facebook</a></li>
+        </ul>
+      </p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+    </div>
+  </div>
+  
+  <div id="whoModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="whoModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="whoModalLabel">¿Quienes somos?</h3>
+    </div>
+    <div class="modal-body">
+      <p>Detrás de esta web y del partido, hay un grupo de ciudadanos normales y corrientes, que pretenden hacer la política 'más amena y divertida', de modo que la próxima vez que quedemos en un bar, podamos hablar más de temas políticos y menos de fútbol o gran hermano</p>
+      <p>
+        Ese grupo lo forman, entre otros:
+        <ul>
+          <li><a href="http://twitter.com/duxtinto" target="_blank">@duxtinto</a></li>
+        </ul>
+      </p>    
     </div>
     <div class="modal-footer">
       <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cerrar</button>
@@ -40,7 +81,7 @@
             <dt>Corrupto: </dt>
             <dd>"Hola, soy un político corrupto"</dd>
             <dt>Torrente:</dt>
-            <dd>"Este, este es el malo"</dd>
+            <dd>"Ves, este es el malo"</dd>
         </dl>
         
         <!-- Form -->
@@ -56,13 +97,13 @@
             <a href="#explanation">¿Que es esto?</a>
           </li>
           <li>
-            <a href="#">¿Quienes somos?</a>
+            <a class="who" href="#">¿Quienes somos?</a>
           </li>
           <li>
-            <a href="#">¡Quiero ayudar!</a>
+            <a class="helpUs" href="#">¡Quiero ayudar!</a>
           </li>
           <li>
-            Version 1.0
+            Version 0.0
           </li>
         </ul>
       </div>
@@ -148,7 +189,7 @@
       <div class="span4">
         <div class="explWrapper">
           <span class="explImage"><i class="icon-group"></i></span>
-          <h3>Comandado desde la web</h3>
+          <h3>Dirigido desde la web</h3>
           <p>Todos votamos en la web, y nuestros representantes replican el resultado en las cámaras</p>
         </div>
       </div>
@@ -178,9 +219,9 @@
       <ul class="footer-links">
         <li><a href="#explanation">¿Que es esto?</a></li>
         <li class="muted">·</li>
-        <li><a href="#">¿Quienes somos?</a></li>
+        <li><a class="who" href="#">¿Quienes somos?</a></li>
         <li class="muted">·</li>
-        <li><a href="#">¡Quiero ayudar!</a></li>
+        <li><a class="helpUs" href="#">¡Quiero ayudar!</a></li>
       </ul>
     </div>
   </footer>
