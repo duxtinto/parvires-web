@@ -38,6 +38,18 @@ gem 'jquery-rails'
 # Internationalization
 gem 'rails-i18n'
 
+# User login/registration
+gem 'devise'
+
+# Charts
+gem "highcharts-rails", "~> 2.3.5"
+
+# Models annotations
+gem 'annotate', ">=2.5.0"
+
+# DB Migrations
+gem 'foreigner' # add support for foreign keys
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
