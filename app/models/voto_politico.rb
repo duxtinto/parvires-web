@@ -1,18 +1,18 @@
 # == Schema Information
 #
-# Table name: voto_votantes
+# Table name: voto_politicos
 #
 #  id          :integer          not null, primary key
 #  voto        :string(255)
-#  fecha       :date
-#  votante_id  :integer
+#  politico_id :integer
 #  votacion_id :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 
-require 'spec_helper'
-
-describe VotoVotante do
-  pending "add some examples to (or delete) #{__FILE__}"
+class VotoPolitico < ActiveRecord::Base
+  attr_accessible :voto
+  
+  belongs_to :politico, :inverse_of => :votos
+  belongs_to :votacion, :inverse_of => :votosPoliticos
 end

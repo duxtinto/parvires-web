@@ -30,7 +30,9 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'votoVotante', 'votosVotantes'
   inflect.irregular 'votoPolitico', 'votosPoliticos'
   inflect.irregular 'partidoPolitico', 'partidosPoliticos'
+  inflect.irregular 'partido', 'partidos'
   inflect.irregular 'grupoParlamentario', 'gruposParlamentarios'
+  inflect.irregular 'legislaturaPolitico', 'legislaturasPoliticos'
   inflect.irregular 'sesion', 'sesiones'
 #  inflect.irregular '', ''
 end

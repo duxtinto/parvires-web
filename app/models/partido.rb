@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: camaras
+# Table name: partidos
 #
 #  id         :integer          not null, primary key
 #  nombre     :string(255)
@@ -8,8 +8,8 @@
 #  updated_at :datetime         not null
 #
 
-require 'spec_helper'
-
-describe Camara do
-  pending "add some examples to (or delete) #{__FILE__}"
+class Partido < ActiveRecord::Base
+  attr_accessible :nombre, :siglas
+  
+  has_many :gruposParlamentarios, :inverse_of => :partido
 end

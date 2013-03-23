@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: camaras
+# Table name: politicos
 #
 #  id         :integer          not null, primary key
 #  nombre     :string(255)
@@ -10,6 +10,6 @@
 
 require 'spec_helper'
 
-describe Camara do
+describe Politico do
   pending "add some examples to (or delete) #{__FILE__}"
 end

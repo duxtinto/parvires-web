@@ -4,6 +4,30 @@ CREATE TABLE `camaras` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `grupo_parlamentarios` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `partido_id` int(11) DEFAULT NULL,
+  `camara_id` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `ref` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `legislatura_politicos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fechaAlta` date DEFAULT NULL,
+  `fechaBaja` date DEFAULT NULL,
+  `enActivo` tinyint(1) DEFAULT NULL,
+  `politico_id` int(11) DEFAULT NULL,
+  `legislatura_id` int(11) DEFAULT NULL,
+  `grupoParlamentario_id` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `legislaturas` (
@@ -12,6 +36,23 @@ CREATE TABLE `legislaturas` (
   `fechaInicio` date DEFAULT NULL,
   `fechaFin` date DEFAULT NULL,
   `camara_id` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `partidos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `siglas` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `politicos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
@@ -114,6 +155,16 @@ CREATE TABLE `votantes` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+CREATE TABLE `voto_politicos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `voto` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `politico_id` int(11) DEFAULT NULL,
+  `votacion_id` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 CREATE TABLE `voto_votantes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `voto` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -144,3 +195,17 @@ INSERT INTO schema_migrations (version) VALUES ('20130317213710');
 INSERT INTO schema_migrations (version) VALUES ('20130317215409');
 
 INSERT INTO schema_migrations (version) VALUES ('20130317215750');
+
+INSERT INTO schema_migrations (version) VALUES ('20130323083102');
+
+INSERT INTO schema_migrations (version) VALUES ('20130323083321');
+
+INSERT INTO schema_migrations (version) VALUES ('20130323084148');
+
+INSERT INTO schema_migrations (version) VALUES ('20130323084457');
+
+INSERT INTO schema_migrations (version) VALUES ('20130323093559');
+
+INSERT INTO schema_migrations (version) VALUES ('20130323104029');
+
+INSERT INTO schema_migrations (version) VALUES ('20130323175528');
