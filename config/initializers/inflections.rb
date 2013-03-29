@@ -18,6 +18,7 @@
 ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'votante', 'votantes'
   inflect.irregular 'votacion', 'votaciones'
+  inflect.irregular 'votacionWeb', 'votacionesWeb'
   inflect.irregular 'voto', 'votos'
   inflect.irregular 'resultado', 'resultados'
   inflect.irregular 'politico', 'politicos'

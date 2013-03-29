@@ -14,6 +14,7 @@ CREATE TABLE `grupo_parlamentarios` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `ref` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nombreCorto` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -66,6 +67,16 @@ CREATE TABLE `pres` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+CREATE TABLE `resultado_politico_grupos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `votacion_id` int(11) DEFAULT NULL,
+  `grupoParlamentario_id` int(11) DEFAULT NULL,
+  `votos` text COLLATE utf8_unicode_ci COMMENT 'JSON Encoded field',
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 CREATE TABLE `resultado_politicos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `numVotan` int(11) DEFAULT NULL,
@@ -77,7 +88,7 @@ CREATE TABLE `resultado_politicos` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `resultado_votantes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -86,7 +97,7 @@ CREATE TABLE `resultado_votantes` (
   `aFavor` int(11) DEFAULT NULL,
   `enContra` int(11) DEFAULT NULL,
   `abstencion` int(11) DEFAULT NULL,
-  `votacion_id` int(11) DEFAULT NULL,
+  `votacion_web_id` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
@@ -107,7 +118,7 @@ CREATE TABLE `sesiones` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -134,6 +145,19 @@ CREATE TABLE `users` (
   UNIQUE KEY `index_users_on_confirmation_token` (`confirmation_token`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+CREATE TABLE `votacion_webs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `votacion_id` int(11) DEFAULT NULL,
+  `ref` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `titulo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `descripcion` text COLLATE utf8_unicode_ci,
+  `enabled` tinyint(1) DEFAULT '1',
+  `frontpage` tinyint(1) DEFAULT '0',
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 CREATE TABLE `votaciones` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ref` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -146,7 +170,7 @@ CREATE TABLE `votaciones` (
   `enabled` tinyint(1) DEFAULT '1',
   `frontpage` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `votantes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -165,14 +189,14 @@ CREATE TABLE `voto_politicos` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=351 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1401 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `voto_votantes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `voto` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `fecha` date DEFAULT NULL,
   `votante_id` int(11) DEFAULT NULL,
-  `votacion_id` int(11) DEFAULT NULL,
+  `votacion_web_id` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
@@ -213,3 +237,9 @@ INSERT INTO schema_migrations (version) VALUES ('20130323104029');
 INSERT INTO schema_migrations (version) VALUES ('20130323175528');
 
 INSERT INTO schema_migrations (version) VALUES ('20130324224345');
+
+INSERT INTO schema_migrations (version) VALUES ('20130326220214');
+
+INSERT INTO schema_migrations (version) VALUES ('20130328135113');
+
+INSERT INTO schema_migrations (version) VALUES ('20130328173655');

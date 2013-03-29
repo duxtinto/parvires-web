@@ -22,10 +22,13 @@ info = doc.at_css('Resultado Informacion')
 numSesion = info.at_css('Sesion').text
 numVotacion = info.at_css('NumeroVotacion').text
 fecha = Date.strptime(info.at_css('Fecha').text, '%d/%m/%Y')
+textoExpediente = info.at_css('TextoExpediente').text
 
 # Crear (si es necesario) la sesión y la votación
 sesion = Sesion.where(legislatura_id: legislaturaId, fecha: fecha, ref: numSesion).first_or_create()
 votacion = Votacion.where(sesion_id: sesion.id, fecha: fecha, ref: numVotacion).first_or_create()
+votacion.titulo = textoExpediente
+votacion.save
 
 puts "Sesion: #{numSesion}"
 puts "Votacion: #{numVotacion}"
@@ -53,7 +56,14 @@ resultados.aFavor = aFavor
 resultados.enContra = enContra
 resultados.abstencion = abstenciones
 resultados.save
-#puts "Resultados: #{resultados.to_s}"
+
+# Inicializamos el array 'resultados totales por grupo parlamentario'
+totalesPorGrupo = {}
+gruposPorLegislatura = LegislaturaPolitico.group(:grupoParlamentario_id).where(:legislatura_id => legislaturaId)
+gruposPorLegislatura.each do |grupo|
+#  puts "grupo: #{grupo.grupoParlamentario_id}"
+  totalesPorGrupo[grupo.grupoParlamentario_id] = { si: 0, no: 0, noVota: 0, abstencion: 0 }
+end
 
 # Votaciones
 votos = doc.css('Votaciones Votacion')
@@ -83,6 +93,18 @@ votos.each do |voto|
   
   voto = VotoPolitico.where(votacion_id: sesion.id, politico_id: politico.id).first_or_create(voto: diputadoVoto)  
  
-#  sleep 2
+  legislaturaPolitico = LegislaturaPolitico.where(legislatura_id: legislaturaId, politico_id: politico.id).first
+#  puts "legislaturaPolitico #{legislaturaPolitico.grupoParlamentario_id}"
+#  puts "#{totalesPorGrupo[legislaturaPolitico.grupoParlamentario_id]}"
+  totalesPorGrupo[legislaturaPolitico.grupoParlamentario_id][diputadoVoto.to_sym] += 1  
 end
 
+puts "totales por grupo: "+totalesPorGrupo.to_s
+
+# Guardamos los totales por grupo
+totalesPorGrupo.each do |grupoParlamentarioId, datos|
+  totalPorGrupo = ResultadoPoliticoGrupo.where(votacion_id: votacion.id, grupoParlamentario_id: grupoParlamentarioId).first_or_create()
+#  puts "datos: #{datos}"
+  totalPorGrupo.votos = ActiveSupport::JSON.encode(datos)
+  totalPorGrupo.save
+end

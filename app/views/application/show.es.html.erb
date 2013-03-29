@@ -1,0 +1,250 @@
+<% content_for :title do %> 
+      Partido Virtual ES
+<% end %>
+
+<%= javascript_include_tag "highcharts" %>
+
+<div class="intro">
+  <div class="container">
+  </div>
+</div>
+
+<script>
+  generarGraficoCiudadanos = function (containerSelector, title, data) {
+    var categories = ['Sí', 'No', 'Abstencion'],
+        name = 'Votos';
+        
+        // Build the data arrays
+        var votosData = [];
+        for (var i = 0; i < data.length; i++) {
+    
+            // add votos data
+            votosData.push({
+                name: categories[i],
+                y: data[i].y,
+                color: data[i].color
+            });
+        }
+    
+        // Create the chart
+        $(containerSelector).highcharts({
+            chart: {
+                type: 'pie'
+            },
+            title: {
+                text: '<b>'+title+'</b>'
+            },
+            yAxis: {
+                title: {
+                    text: 'Total votation share'
+                }
+            },
+            plotOptions: {
+                pie: {
+                    shadow: false,
+                    center: ['50%', '50%']
+                }
+            },
+            series: [{
+                name: 'Votos',
+                data: votosData,
+                size: '85%',
+                dataLabels: {
+                    formatter: function() {
+                        return this.y > 5 ? this.point.name : null;
+                    },
+                    color: 'white',
+                    distance: -30
+                }
+            }]
+        });
+  }        
+
+  generarGraficoPoliticos = function (containerSelector, title, data) {
+    var categories = ['Sí', 'No', 'Abstencion', 'No vota'],
+        name = 'Votos';
+        
+        // Build the data arrays
+        var votosData = [];
+        var gruposData = [];
+        for (var i = 0; i < data.length; i++) {
+    
+            // add votos data
+            votosData.push({
+                name: categories[i],
+                y: data[i].y,
+                color: data[i].color
+            });
+    
+            // add grupo data
+            for (var j = 0; j < data[i].drilldown.data.length; j++) {
+                var brightness = 0.2 - (j / data[i].drilldown.data.length) / 5 ;
+                gruposData.push({
+                    name: data[i].drilldown.categories[j],
+                    y: data[i].drilldown.data[j],
+                    color: Highcharts.Color(data[i].color).brighten(brightness).get()
+                });
+            }
+        }
+    
+        // Create the chart
+        $(containerSelector).highcharts({
+            chart: {
+                type: 'pie'
+            },
+            title: {
+                text: '<b>'+title+'</b>'
+            },
+            yAxis: {
+                title: {
+                    text: 'Total votation share'
+                }
+            },
+            plotOptions: {
+                pie: {
+                    shadow: false,
+                    center: ['50%', '50%']
+                }
+            },
+            series: [{
+                name: 'Votos',
+                data: votosData,
+                size: '60%',
+                dataLabels: {
+                    formatter: function() {
+                        return this.y > 5 ? this.point.name : null;
+                    },
+                    color: 'white',
+                    distance: -30
+                }
+            }, {
+                name: 'Votos',
+                data: gruposData,
+                size: '80%',
+                innerSize: '60%',
+                dataLabels: {
+                    formatter: function() {
+                        return '<b>'+ this.point.name +':</b> '+ this.y
+                    }
+                }
+            }]
+        });        
+  }
+</script>
+
+<div id="votaciones">
+  <div class="container">
+  <% @votacionesWeb.each do |votacionWeb| %>
+    <div class="votacion" id="votacion-<%= votacionWeb.id %>">
+      <div class="row-fluid votacionHeader">
+        <h2>"<%= votacionWeb.titulo %>"</h2>
+        <div class="votacionInfo">
+          
+        </div>
+      </div>
+      <div class="row-fluid" class="votacionCharts">
+          <!-- Gráfica de ciudadanos -->
+          <div class="span5 ciudadanosChart">
+            <div class="row-fluid">
+              <div class="span12 chartContainer"></div>
+            </div>
+            <div class="row-fluid">
+              <div class="span12 votoUsuario">
+                <h3>y tú... ¿que hubieras votado?</h3>
+                <form>
+                  <p class="votoBotones">
+                    <button class="btn btn-success" type="button">A Favor</button>
+                    <button class="btn btn-danger" type="button">En Contra</button>
+                    <button class="btn btn-info" type="button">Abstención</button>
+                  </p>  
+                </form>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Gráfica de políticos -->
+          <div class="span7 politicosChart">
+            <div class="chartContainer"></div>
+          </div>  
+      </div>
+    </div>
+   
+    <script>    
+    $(function () {
+      var colors = Highcharts.getOptions().colors;
+
+      // Crear la gráfica para el voto de los ciudadanos
+      <% totales = ResultadoVotantes.where(votacion_web_id: votacionWeb.id).first %>
+      var data = [{
+                    y: <%= totales.aFavor %>,
+                    color: colors[2],
+                }, {
+                    y: <%= totales.enContra %>,
+                    color: colors[3],
+                }, {
+                    y: <%= totales.abstencion %>,
+                    color: colors[0],
+                }];
+                
+        generarGraficoCiudadanos('#votacion-<%= votacionWeb.id %> .ciudadanosChart .chartContainer', '<%= "Ciudadanos (#{totales.numVotan} votos)" %>' ,data);
+      
+      // Crear la gráfica para el voto de los políticos
+      <%
+        totales = ResultadoPoliticos.where(votacion_id: votacionWeb.votacion_id).first
+        totalesPorGrupos = {si: {keys: [], data: []}, no: {keys: [], data: []}, abstencion: {keys: [], data: []}, noVota: {keys: [], data: []}}
+        ResultadoPoliticoGrupo.where(votacion_id: votacionWeb.votacion_id).each do |totalesPorGrupo|
+          ActiveSupport::JSON.decode(totalesPorGrupo.votos).each do |voto, numVotos|
+             if (numVotos > 0)
+               totalesPorGrupos[voto.to_sym][:keys].push(totalesPorGrupo.grupoParlamentario.nombreCorto)
+               totalesPorGrupos[voto.to_sym][:data].push(numVotos)
+             end 
+           end
+        end
+      %>
+      
+      var data = [{
+                    y: <%= totales.aFavor %>,
+                    color: colors[2],
+                    drilldown: {
+                        name: 'Sí',
+                        categories: <%=raw ActiveSupport::JSON.encode(totalesPorGrupos[:si][:keys]) %>,
+                        data: <%=raw ActiveSupport::JSON.encode(totalesPorGrupos[:si][:data]) %>,
+                        color: colors[2]
+                    }
+                }, {
+                    y: <%= totales.enContra %>,
+                    color: colors[3],
+                    drilldown: {
+                        name: 'No',
+                        categories: <%=raw ActiveSupport::JSON.encode(totalesPorGrupos[:no][:keys]) %>,
+                        data: <%=raw ActiveSupport::JSON.encode(totalesPorGrupos[:no][:data]) %>,
+                        color: colors[3]
+                    }
+                }, {
+                    y: <%= totales.abstencion %>,
+                    color: colors[0],
+                    drilldown: {
+                        name: 'Abstencion',
+                        categories: <%=raw ActiveSupport::JSON.encode(totalesPorGrupos[:abstencion][:keys]) %>,
+                        data: <%=raw ActiveSupport::JSON.encode(totalesPorGrupos[:abstencion][:data]) %>,
+                        color: colors[0]
+                    }
+                }, {
+                    y: <%= totales.numNoVotan %>,
+                    color: colors[1],
+                    drilldown: {
+                        name: 'No vota',
+                        categories: <%=raw ActiveSupport::JSON.encode(totalesPorGrupos[:noVota][:keys]) %>,
+                        data: <%=raw ActiveSupport::JSON.encode(totalesPorGrupos[:noVota][:data]) %>,
+                        color: colors[1]
+                    }
+                }];
+                
+        generarGraficoPoliticos('#votacion-<%= votacionWeb.id %> .politicosChart .chartContainer', '<%= "Diputados (#{@totalPoliticos} votos)" %>' ,data);
+    });
+  </script>
+    
+  <% end %>
+    
+  </div>
+</div>

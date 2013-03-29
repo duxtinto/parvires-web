@@ -10,6 +10,8 @@
 #  sesion_id   :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  enabled     :boolean          default(TRUE)
+#  frontpage   :boolean          default(FALSE)
 #
 
 require 'spec_helper'

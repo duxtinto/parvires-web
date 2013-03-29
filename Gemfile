@@ -48,6 +48,7 @@ gem "highcharts-rails", "~> 2.3.5"
 gem 'annotate', ">=2.5.0"
 
 # DB Migrations
+gem "migration_comments", "~> 0.2.1" # Allow us to add comments
 gem 'foreigner' # add support for foreign keys
 
 # To use ActiveModel has_secure_password

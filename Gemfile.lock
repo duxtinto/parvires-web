@@ -83,6 +83,8 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    migration_comments (0.2.1)
+      rails (>= 2.3.2)
     mime-types (1.21)
     multi_json (1.6.1)
     mysql2 (0.3.11)
@@ -179,6 +181,7 @@ DEPENDENCIES
   highcharts-rails (~> 2.3.5)
   jquery-rails
   less-rails
+  migration_comments (~> 0.2.1)
   mysql2
   rails (= 3.2.11)
   rails-i18n
