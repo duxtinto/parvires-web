@@ -24,10 +24,19 @@ numVotacion = info.at_css('NumeroVotacion').text
 fecha = Date.strptime(info.at_css('Fecha').text, '%d/%m/%Y')
 textoExpediente = info.at_css('TextoExpediente').text
 
+# Buscar la iniciativa
+iniciativa = Iniciativa.where("titulo LIKE '%#{textoExpediente}%' AND legislatura_id = #{legislaturaId}").first
+if (iniciativa.blank?)
+  puts "¡¡¡La iniciativa '#{textoExpediente}' no está en la base de datos!!!"  
+end
+
 # Crear (si es necesario) la sesión y la votación
-sesion = Sesion.where(legislatura_id: legislaturaId, fecha: fecha, ref: numSesion).first_or_create()
-votacion = Votacion.where(sesion_id: sesion.id, fecha: fecha, ref: numVotacion).first_or_create()
+sesion = Sesion.where(legislatura_id: legislaturaId, fecha: fecha, ref: numSesion).first_or_create
+votacion = Votacion.where(sesion_id: sesion.id, fecha: fecha, ref: numVotacion).first_or_create
 votacion.titulo = textoExpediente
+if (!iniciativa.blank?)
+  votacion.iniciativa_id = iniciativa.id
+end  
 votacion.save
 
 puts "Sesion: #{numSesion}"

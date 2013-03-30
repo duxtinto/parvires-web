@@ -18,5 +18,6 @@ class Legislatura < ActiveRecord::Base
   has_many :sesiones, :inverse_of => :legislatura
   has_many :legislaturasPoliticos, :inverse_of => :legislatura
   has_many :politicos, :through => :legislaturasPoliticos
+  has_many :iniciativas, inverse_of: :legislatura
   
 end

@@ -18,6 +18,16 @@ CREATE TABLE `grupo_parlamentarios` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+CREATE TABLE `iniciativas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `url` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `legislatura_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 CREATE TABLE `legislatura_politicos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fechaAlta` date DEFAULT NULL,
@@ -101,7 +111,7 @@ CREATE TABLE `resultado_votantes` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `schema_migrations` (
   `version` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -169,6 +179,7 @@ CREATE TABLE `votaciones` (
   `updated_at` datetime NOT NULL,
   `enabled` tinyint(1) DEFAULT '1',
   `frontpage` tinyint(1) DEFAULT '0',
+  `iniciativa_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -243,3 +254,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130326220214');
 INSERT INTO schema_migrations (version) VALUES ('20130328135113');
 
 INSERT INTO schema_migrations (version) VALUES ('20130328173655');
+
+INSERT INTO schema_migrations (version) VALUES ('20130329044446');
+
+INSERT INTO schema_migrations (version) VALUES ('20130329052640');

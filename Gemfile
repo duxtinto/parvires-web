@@ -40,6 +40,7 @@ gem 'rails-i18n'
 
 # User login/registration
 gem 'devise'
+gem "devise-i18n", "~> 0.6.5"
 
 # Charts
 gem "highcharts-rails", "~> 2.3.5"

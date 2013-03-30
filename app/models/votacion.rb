@@ -18,6 +18,7 @@ class Votacion < ActiveRecord::Base
   attr_accessible :descripcion, :fecha, :ref, :titulo
   
   belongs_to :sesion, :inverse_of => :votaciones
+  belongs_to :iniciativa, :inverse_of => :votaciones
   has_many :votosPoliticos, :inverse_of => :votacion
   has_one :resultadoPoliticos, :inverse_of => :votacion
   has_many :resultadoPoliticoGrupos, :inverse_of => :votacion

@@ -35,5 +35,6 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'grupoParlamentario', 'gruposParlamentarios'
   inflect.irregular 'legislaturaPolitico', 'legislaturasPoliticos'
   inflect.irregular 'sesion', 'sesiones'
+  inflect.irregular 'iniciativa', 'iniciativas'
 #  inflect.irregular '', ''
 end
