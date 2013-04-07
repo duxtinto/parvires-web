@@ -19,7 +19,6 @@
 #  unconfirmed_email      :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  votante_id             :integer
 #
 
 class User < ActiveRecord::Base
@@ -33,5 +32,12 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
   
-  belongs_to :votante, :inverse_of => :user, :dependent => :destroy 
+  has_one :votante, :inverse_of => :user 
+  
+  after_create :crear_votante
+  
+  protected
+  def crear_votante
+    Votante.create(user_id: self.id)
+  end 
 end

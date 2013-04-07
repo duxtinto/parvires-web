@@ -64,5 +64,15 @@ module Website
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
+    # SMTP
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :address              => "smtp.1and1.es",
+      :port                 => 587,
+      :user_name            => 'admin@partidovirtual.es',
+      :password             => '$y$t3m4dm1n',
+      :authentication       => 'plain',
+      :enable_starttls_auto => true  }    
   end
 end

@@ -27,7 +27,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Partido Virtual</a>
+          <a class="brand" href="#">YoVoto</a>
           <div class="container nav-collapse">
             <ul class="nav" id="mainMenu">
               <li class="">
@@ -47,15 +47,18 @@
             </ul>
             
             <ul class="nav" id="actionsBar">
-              <li class="">
-                <a href="/"><i class="icon-signin"></i> Identificarme</a>
-              </li>
-              <li class="">
-                <a href="/"><i class="icon-user"></i> Censarme</a>
-              </li>
-              <li class="">
-                <a href="/"><i class="icon-envelope"></i> Contactar</a>
-              </li>
+              
+            <% if user_signed_in? %>
+              <% text = raw "<i class='icon-signout'></i> Salir" %>
+              <li><%= link_to text, destroy_user_session_path, method: :delete %></li>
+            <% else %>
+              <% text = raw "<i class='icon-user'></i> Censarme" %>
+              <li><%= link_to text, new_user_registration_path %></li>
+              <% text = raw "<i class='icon-signin'></i> Identificarme" %>
+              <li><%= link_to text, new_user_session_path %></li>
+            <% end %>              
+              <% text = raw "<i class='icon-envelope'></i> Contactar" %>
+              <li><%= link_to text, 'mailto:cuentanos@partidovirtual.es' %></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -64,14 +67,16 @@
 
     <div id="mainContent">
 
-      <% if ( !(notice.blank? && alert.blank?) ) %>
       <div id="notifications">
         <div class="container">
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
+          <% if ( !notice.blank? ) %>
+            <p class="alert alert-info"><%= notice %></p>
+          <% end %>
+          <% if ( !alert.blank? ) %>
+            <p class="alert alert-error"><%= alert %></p>
+          <% end %>
         </div>
       </div>
-      <% end %>
     
       <%= yield %>
       

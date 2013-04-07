@@ -14,7 +14,7 @@
 #
 
 class ResultadoVotantes < ActiveRecord::Base
-  attr_accessible :aFavor, :abstencion, :enContra, :numNoVotan, :numVotan
+  attr_accessible :aFavor, :abstencion, :enContra, :numNoVotan, :numVotan, :votacion_web_id
   
   belongs_to :votacionWeb, :inverse_of => :resultadoVotantes, :dependent => :destroy
 end

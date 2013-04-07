@@ -43,7 +43,7 @@ gem 'devise'
 gem "devise-i18n", "~> 0.6.5"
 
 # Charts
-gem "highcharts-rails", "~> 2.3.5"
+gem "highcharts-rails", "~> 3.0.0"
 
 # Models annotations
 gem 'annotate', ">=2.5.0"

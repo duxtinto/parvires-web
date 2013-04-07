@@ -2,7 +2,7 @@ Website::Application.routes.draw do
   devise_for :users
 
   resources :pres, :only => [:create]
-
+  resources :votoVotantes, :only => [:create]
 
   root :to => 'application#show'
   
@@ -64,7 +64,7 @@ Website::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
 end
 #== Route Map
-# Generated on 29 Mar 2013 16:24
+# Generated on 07 Apr 2013 23:49
 #
 #             user_session POST   /users/sign_in(.:format)          devise/sessions#create
 #     destroy_user_session DELETE /users/sign_out(.:format)         devise/sessions#destroy
@@ -82,4 +82,5 @@ end
 #    new_user_confirmation GET    /users/confirmation/new(.:format) devise/confirmations#new
 #                          GET    /users/confirmation(.:format)     devise/confirmations#show
 #                     pres POST   /pres(.:format)                   pres#create
+#             votoVotantes POST   /votoVotantes(.:format)           votoVotantes#create
 #                     root        /                                 application#show

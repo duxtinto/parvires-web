@@ -2,4 +2,17 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 es:
-  hello: "Hola Mundo"
+  helpers:
+    label:
+      user:
+        email: "Correo electrónico"
+        password: "Contraseña"
+        password_confirmation: "Repetir contraseña"
+  devise:
+    confirmations:
+      confirmed: "Tu cuenta ha sido activada. Ya puedes empezar a votar :)."
+    sessions:
+      signed_in: ""
+      signed_out: ""
+    passwords:
+      updated: "Contraseña actualizada con éxito"

@@ -65,7 +65,7 @@ GEM
       railties (>= 3.1)
     foreigner (1.4.0)
       activerecord (>= 3.0.0)
-    highcharts-rails (2.3.5)
+    highcharts-rails (3.0.0)
       railties (>= 3.1)
     hike (1.2.1)
     i18n (0.6.4)
@@ -180,7 +180,7 @@ DEPENDENCIES
   devise-i18n (~> 0.6.5)
   font-awesome-rails
   foreigner
-  highcharts-rails (~> 2.3.5)
+  highcharts-rails (~> 3.0.0)
   jquery-rails
   less-rails
   migration_comments (~> 0.2.1)

@@ -26,7 +26,7 @@ CREATE TABLE `iniciativas` (
   `updated_at` datetime NOT NULL,
   `legislatura_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `legislatura_politicos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -148,12 +148,11 @@ CREATE TABLE `users` (
   `unconfirmed_email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `votante_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_email` (`email`),
   UNIQUE KEY `index_users_on_reset_password_token` (`reset_password_token`),
   UNIQUE KEY `index_users_on_confirmation_token` (`confirmation_token`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `votacion_webs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -189,8 +188,9 @@ CREATE TABLE `votantes` (
   `apellidos` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `voto_politicos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -211,7 +211,7 @@ CREATE TABLE `voto_votantes` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO schema_migrations (version) VALUES ('20130217111625');
 
@@ -258,3 +258,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130328173655');
 INSERT INTO schema_migrations (version) VALUES ('20130329044446');
 
 INSERT INTO schema_migrations (version) VALUES ('20130329052640');
+
+INSERT INTO schema_migrations (version) VALUES ('20130331202209');
