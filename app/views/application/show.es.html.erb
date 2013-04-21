@@ -1,13 +1,20 @@
 <% content_for :title do %> 
-      YoVoto.es - Recupera la política
+      YoVoto.es - la política es de todos
 <% end %>
 
 <%= javascript_include_tag "graficos" %>
 
-<div class="intro">
-  <div class="container">
+  <div class="intro">
+    <div class="jumbotron masthead">
+      <div class="container">
+        <h1>¡la política también es tuya!</h1>
+        <ul id="description" class="unstyled">
+            <li><i class="icon-envelope-alt"></i> Vota en todas las votaciones que se realizan en el congreso</li>
+            <li><i class="icon-info-sign"></i> Infórmate de todas las iniciativas que debaten los congresistas</li>
+        </ul>
+      </div>
+    </div>
   </div>
-</div>
 
 <script>
   generarGraficoCiudadanos = function (containerSelector, title, data) {
@@ -135,6 +142,7 @@
 <div id="votaciones">
   <div class="container">
   <% @votacionesWeb.each do |votacionWeb| %>
+    <a name="votacion-<%= votacionWeb.id %>"></a>
     <div class="votacion" id="votacion-<%= votacionWeb.id %>">
       <div class="row-fluid votacionHeader">
         <h2>"<%= votacionWeb.titulo %>"</h2>
@@ -143,7 +151,7 @@
             <div class="span12">
               <ul class="iniciativaActions unstyled">
                 <li><i class="icon-calendar"></i> Sesión de <%= votacionWeb.fecha.to_time.strftime('%d-%m-%Y') %></li>
-                <li><i class="icon-file-alt"></i> <a target="_blank" href="<%= votacionWeb.votacion.iniciativa.url %>">Infórmate sobre la iniciativa antes de votar <i class="icon-external-link"></i></a></li>
+                <li><i class="icon-info-sign"></i> <a target="_blank" href="<%= votacionWeb.votacion.iniciativa.url %>">Infórmate sobre la iniciativa antes de votar <i class="icon-external-link"></i></a></li>
               </ul>
             </div>
           </div>  
