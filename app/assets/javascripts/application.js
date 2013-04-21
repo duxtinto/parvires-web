@@ -14,4 +14,4 @@
 //= require jquery_ujs
 //= require twitter/bootstrap/bootstrap-transition
 //= require twitter/bootstrap/bootstrap-modal
-//= require_tree .
+//= require frontpage

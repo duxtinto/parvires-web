@@ -1,0 +1,37 @@
+@import "twitter/bootstrap/variables.less";
+@import "twitter/bootstrap/mixins.less";
+
+/* Página de Votaciones */
+.intro { 
+  margin-bottom: 40px;
+  
+  .masthead {
+    padding: 20px 0 25px;
+    h1 {
+      font-size: 40px;
+      letter-spacing: -1px;      
+    }
+    ul#description {
+      display: inline-block; font-size: 18px; margin-top: 10px;
+      li { text-align: left; line-height: 30px; color: #EEEEEE; }
+    }
+  }
+}
+
+#votaciones {
+  .votacion {
+    margin-bottom: 60px;
+    .votacionHeader {
+      .box-sizing(border-box); background-color: @grayLighter; .border-radius(5px); padding: 15px 20px; margin-bottom: 15px; border: 2px dotted @grayDark;   
+      h2 { font-size: 18px; line-height: 20px; }
+    }
+    .ciudadanosChart {
+      .chartContainer { min-width: 300px; height: 300px; margin: 0 auto 10px; }
+      .votoUsuario {
+        background-color: @grayLighter; .border-radius(5px); padding: 10px 20px;
+        h3 { font-size: 18px; line-height: 22px; text-align: center; margin-bottom: 15px; }
+        .votoBotones { text-align: center; }
+      }
+    }
+  }
+}

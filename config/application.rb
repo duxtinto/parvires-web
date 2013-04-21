@@ -51,7 +51,7 @@ module Website
     # Use SQL instead of Active Record's schema dumper when creating the database.
     # This is necessary if your schema can't be completely dumped by the schema dumper,
     # like if you have constraints or database-specific column types
-    # config.active_record.schema_format = :sql
+    config.active_record.schema_format = :sql
 
     # Enforce whitelist mode for mass assignment.
     # This will create an empty whitelist of attributes available for mass-assignment for all models
@@ -64,5 +64,15 @@ module Website
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
+    # SMTP
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :address              => "smtp.1and1.es",
+      :port                 => 587,
+      :user_name            => 'admin@partidovirtual.es',
+      :password             => '$y$t3m4dm1n',
+      :authentication       => 'plain',
+      :enable_starttls_auto => true  }    
   end
 end

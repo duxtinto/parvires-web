@@ -1,0 +1,5 @@
+<p>¡Bienvenido <%= @email %>!</p>
+
+<p>Puedes activar tu cuenta utilizando el siguiente enlace:</p>
+
+<p><%= link_to 'Activar mi cuenta', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
