@@ -70,7 +70,7 @@ module Website
     config.action_mailer.smtp_settings = {
       :address              => "smtp.1and1.es",
       :port                 => 587,
-      :user_name            => 'admin@partidovirtual.es',
+      :user_name            => 'admin@yovoto.es',
       :password             => '$y$t3m4dm1n',
       :authentication       => 'plain',
       :enable_starttls_auto => true  }    

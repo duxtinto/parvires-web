@@ -52,7 +52,7 @@ Website::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # Need it by devise
-  config.action_mailer.default_url_options = { :host => 'www.partidovirtual.es' }
+  config.action_mailer.default_url_options = { :host => 'www.yovoto.es' }
 
   # Enable threaded mode
   # config.threadsafe!
